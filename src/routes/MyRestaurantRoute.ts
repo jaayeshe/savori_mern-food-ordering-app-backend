@@ -1,5 +1,6 @@
 import express from "express";
 import multer from "multer";
+import MyRestaurantController from "../controllers/MyRestaurantController";
 
 const router = express.Router();
 
@@ -17,3 +18,5 @@ router.post(
   upload.single("imageFile"),
   MyRestaurantController.createMyRestaurant
 );
+
+export default router;
