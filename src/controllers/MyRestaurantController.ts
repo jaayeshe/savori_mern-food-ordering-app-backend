@@ -14,7 +14,7 @@ const createMyRestaurant = async (req: Request, res: Response) => {
     if (existingRestaurant) {
       return res
         .status(409)
-        .json({ message: "User restaurant already exisits" });
+        .json({ message: "User restaurant already exists" });
     }
 
     // need to create a data URI string that represents
