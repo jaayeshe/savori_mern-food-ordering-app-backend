@@ -12,8 +12,9 @@ const createMyRestaurant = async (req: Request, res: Response) => {
     const existingRestaurant = await Restaurant.find({ user: req.userId });
 
     if (existingRestaurant) {
-      ({ message: "User restaurant already exisits" });
-      return res.status(409).json;
+      return res
+        .status(409)
+        .json({ message: "User restaurant already exisits" });
     }
 
     // need to create a data URI string that represents
