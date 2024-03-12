@@ -9,9 +9,9 @@ const createMyRestaurant = async (req: Request, res: Response) => {
     // restaurant in the database.
     //the user can only create 1 restaurant per account
 
-    const exisitngrestaurant = await Restaurant.find({ user: req.userId });
+    const existingRestaurant = await Restaurant.find({ user: req.userId });
 
-    if (exisitngrestaurant) {
+    if (existingRestaurant) {
       ({ message: "User restaurant already exisits" });
       return res.status(409).json;
     }
