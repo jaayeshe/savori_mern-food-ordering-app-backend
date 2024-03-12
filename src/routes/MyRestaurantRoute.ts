@@ -1,6 +1,7 @@
 import express from "express";
 import multer from "multer";
 import MyRestaurantController from "../controllers/MyRestaurantController";
+import { jwtCheck, jwtParse } from "../middleware/auth";
 
 const router = express.Router();
 
@@ -15,8 +16,12 @@ const upload = multer({
 // /api/my/restaurant
 router.post(
   "/",
+  jwtCheck,
+  jwtParse,
   upload.single("imageFile"),
   MyRestaurantController.createMyRestaurant
 );
 
 export default router;
+//jwtCheck: will ensure that we'll get a valid token request
+//jwtParse: this holds the current logged in user's info out of the token & pass on to the request
