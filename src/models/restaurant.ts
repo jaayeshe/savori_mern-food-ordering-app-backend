@@ -1,14 +1,16 @@
-import mongoose from "mongoose";
+import mongoose, { InferSchemaType } from "mongoose";
 
 const menuItemSchema = new mongoose.Schema({
+  _id: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+    default: () => new mongoose.Types.ObjectId(),
+  },
   name: { type: String, required: true },
   price: { type: Number, required: true },
 });
 
-//define schema & properties that we want
-//to store for a given restaurant.
-//first we will create a reference to the
-//user document for the user who is creating this restaurant.
+export type MenuItemType = InferSchemaType<typeof menuItemSchema>;
 
 const restaurantSchema = new mongoose.Schema({
   user: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
